@@ -28,7 +28,7 @@ Some models were found on the [ThreeJS Examples](https://github.com/mrdoob/three
 
 ## Deadline
 
-You have until **Sunday, 10th of December, 2023 - 11:42PM** to submit the project.
+You have until **Sunday, 7th of January, 2023 - 11:42PM** to submit the project.
 
 ## Building and Launching
 
