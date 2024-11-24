@@ -20,15 +20,15 @@ Some models were found on the [ThreeJS Examples](https://github.com/mrdoob/three
 
 ## How to submit
 
-- Send a mail to yohann.degliesposti@gmail.com
-- Title: [WEB3D][PROJ] - login
+- [Drop your code, as a zip file, in here](https://drive.google.com/drive/folders/1B4TgjEEfdOYjTHp9lK81HVvfOH6FCRh0?usp=drive_link)
+- Name of the zip: <login>.zip
 - Send the code as a zip file. You can send me a google drive link if the package is too heavy.
 
 **Be careful**: You will lose points if the project does not compile or if the node_modules are still there.
 
 ## Deadline
 
-You have until **Sunday, 7th of January, 2023 - 11:42PM** to submit the project.
+You have until **Sunday, 15th of January, 2024 - 11:42PM** to submit the project.
 
 ## Building and Launching
 
@@ -59,34 +59,48 @@ Add the `lil-gui` package, and instantiate the debugger.
 - The scene is displayed on a web page, in fullscreen, with a cube and a perspective camera
 - The debugger is installed, it is instantiated in the scene.
 
-# Step 1 - My own little home
+# Step 1 - Set up a basic switcharoo
 
-Let's build a basic home ! You'll see, it'll be very, very basic.
+What I want you to build here is a kind of **carousel**. We will alternate between different models of your creation.
+
+So first, let's create the basics for that.
 
 Add the `OrbitControls` to your camera. they should make it so that the cube is at the center of everything. You will have to create an update function.
 
-Then, add a property in the debugger to scale the cube, and to change its position. Position it as you wish.
+Then, add a property in the debugger to **scale the cube, and to change its material color.**
 
-Add a `ConeGeometry` to the scene. It will be the roof of our home. Add a property to scale it and position it on the debugger, and position it properly on your house.
+Next, add an **event listener** on the **space** keyboard touch.
 
-We are almost there ! Let's add a door. Create a `Plane`, rotate it so that it is upwards and scale it so that it ressembles a door. Put it on one of the faces of the cube.
+- When "space" is pressed, the displayed 3D model (whatever it is) should scale down to 0 and the next 3D model in the list should slowly scale up to 1.
 
-Finally, we want a ground. Let's create another `Plane`, color it green, and put it horizontally under your house. Make it realistic! Add a way on the debugger to scale your ground.
+**Tip: you can use gsap for this.**
 
-On the debugger, also add a way to change the cube's and the roof's material colors.
+For now, have the cube transition to a `ConeGeometry`. Then, when pressing space again, it should transition to a cube again.
+
+The `ConeGeometry` should have a `ToonMaterial` attached to it, and be of a color of your choice which is not the same as the cube.
+
+To our lil-gui, add the option to **change the color of the cone**.
 
 ## This step is finished when...
 
-- The OrbitControls are in the scene and working.
-- The Cube, Cone, and two planes are in the scene, and create a house with the cube as body, the cone as roof, one plane as door and one plane as ground.
-- The ground plane is green.
-- The debugger displays ways to change the cube and the roof position, scale and color.
-- The door is properly dimensioned, and positioned horizontally on a wall.
+- Your camera has OrbitControls attached and can **rotate around a 3D model at its center.**
+- Through our debugger, we can scale the cube and change its color.
+- When pressing `space`, our cube scales down to 0 and a `ConeGeometry`scales up to 1.
+- It is possible to change **the color of the cone through our debugger**
 
+# Step 2 - My own little home
 
-# Step 2 - What a door, what a door
+Let's build a basic home ! You'll see, it'll be very, very basic.
 
-I find our door to be a bit bland. So let's change this!
+**Let's get back to our cube**
+
+Add a `ConeGeometry` to the scene. It will be the roof of our home. Add a property on the debugger to scale it and position it on the debugger, and position it properly on top of the cube so it acts as our roof.
+
+Let's add a door. Create a `Plane`, rotate it so that it is upwards and scale it so that it ressembles a door. Put it on one of the faces of the cube.
+
+**Tips: you should use [**Groups**](https://threejs.org/docs/?q=Group#api/en/objects/Group) to simplify this one.**
+
+On the debugger, also add a way to change the roof's material colors.
 
 In this github folder, you will find a folder 'textures/door'. These textures are the one we will use for our door.
 
@@ -98,67 +112,75 @@ Let's do the same for the house. In the folder 'textures/house', you will see a 
 
 Load all those textures, and put them on the cube. If any of them fail, you should display the message 'Texture could not load' in the console.
 
-**Be careful to choose the proper material for this, it has to be able to receive lighting!**
+Be careful to choose the proper material for this, it has to be able to receive lighting!
+
+**Finally, make sure that when we press `space` our carousel still works. The house and the cone should alternate each other.**
 
 ## This step is finished when...
 
-- All textures for the door are loaded properly.
-- The door displays height, normals, AO, metalness, rougness, alpha, color
-- In case of a loading problem, the code will display the message 'Texture could not load'.
-- All textures for the house are loaded properly.
-- The cube displays ambient, normals, roughness,  AO
-- In case of a loading problem, the code will display the message 'Texture could not load'.
+- The cone and plane are in the scene, with the cone acting as a roof on our cube.
+- The debugger displays ways to change the cone position, scale and color.
+- The plane has all textures needed to act as a door, is properly positioned.
+- The cube has all textures loaded to resemble a brick house.
+- When a texture fails to load, the message 'Texture could not load' is displayed.
+- When pressing `space`, the model at the center rotates between our cone in ToonShader and our house.
 
-# Step 3 - Ambiance and Animals
+# Step 3 - Animals
 
 Let's add life in this scene. Don't be afraid of what I'm gonna ask you, it's simply to be able to evaluate your skills on this
 
-First, start by adding a directionnal light. It should come from above and hit the roof, as the sun would.
+First, import the Fox model. This will also be a new 3D model in our rotation.
+Import it, scale it properly. And make it so that **when I press space, the displayed model switches between our house, the cone and the renard**.
 
-Then, let's add some bushes. Let's not make it complicated: a bush is a sphere in a green material. Put different 'bushes' in your floor.
-
-Now, let's create flowers. We can do it easy as well: a flower is simply a `CylinderGeometry`, with on top of it a `ConeGeomtry`, reversed. Scale them properly, position them well, and you have a flower!
-
-I want flowers to be different colors, and to shine. So, **make the material of the ConeGeometry receptive to light**, and change the color of the cone. Then for each flower, create a `pointlight` that shines the color of the cone.
-
-Ex: a purple cone will have a purple pointlight attached to it.
-
-Tips: you should use [**Groups**](https://threejs.org/docs/?q=Group#api/en/objects/Group) to simplify this one.
-
-Create and position at least 3 flowers of different color.
-
-Then let's talk animals !
-Inside this folder, you will find a /models/ folder.
-
-In it, you will find `flamingo.glb` and `parrot.glb`. Load those two models. **Do not be afraid, glb are just binary GLTF, you can load them with the GLTF loader**.
-
-Have them play their flying animation. Then, make them rotate around the house.
-
-If all goes well, the two birds should be flapping their wings and rotating around the house.
-
-For a final touch, change the color of the renderer to blue. Black background just doesn't cut it !
+Second, import the flamingo and parrot model **in our house model**. Position them as you wish, around the house.
 
 ## This step is finished when...
 
-- A directional light is shining on the roof
-- At least three 'bushes' are in the scene
-- At least three flowers of different colors are shining, with proper pointlights attached.
-- The parrot and the flamingo are in the scene.
-- The parrot and the flamingo are flapping their wings, and rotating around the house.
-- The renderer color is blue.
+- The fox is imported and properly scaled.
+- The flamingo and parrot are imported and properly scaled.
+- The fox appears as a standalone 3D models that will rotate out when we press space.
+- The parrot and flamingo are part of our "house" 3D Model and rotate out when it rotates out.
 
-# Step 4 - Knock on your door
+# Step 4 - Lights
 
-To finish it, let's add two things.
+Let's add some lights!
 
-First I want your login displayed on the door. Create a new 3D text, scale it properly. This text should display your login. Hang the login on the door.
+Add a spotlight. It should properly light our 3D models from the top, and be intense enough so we can see them properly.
 
-Then, I want to be able to knock on your door. Add a raycast to the door, and when I click on it, log 'knock knock' in the console. Yep, that's all.
+Add a property in our debugger to change the light(s) color.
+
+To be fair, you can be free on this step, as long as I can see the models properly and that I can change the lights color.
+
+**FORBIDDEN: NO AMBIANT LIGHTING.**
 
 ## This step is finished when...
 
-- Your login is displayed on the door through a 3D TextMesh
-- When clicking on the door, the message 'knock knock' is displayed in the console.
+- One or multiple lights light properly our models.
+- I can change the color of the lights through the debugger.
+- NO AMBIANT LIGHTING
+
+# Step 5 - Naming and Animations
+
+Here is the final boss guys, you're almost there!
+
+First add 3D text(s). This should display
+- "The Fox", when the fox is the displayed 3D model.
+- "My House - login" with your login when the house is the displayed 3D model.
+- "The cone of toons" when the cone is the displayed 3D model.
+
+Second, let's animate our 3D models.
+- When I click on the fox, it should start its 'running' animation **in place**. When I click again, it should stop.
+- When I click on the house, the flamingo and parrot should start **flapping their wings and rotating around the house.**. They should stop if I click on the house again.
+
+**NB: Think about reusability and performances**
+
+## This step is finished when...
+
+- A 3D text 'The Fox' is displayed when the fox is the active 3D model
+- A 3D text 'My Home - login' is displayed when the house is the active 3D model.
+- A 3D text 'The cone of toons' is displayed when the cone is the active 3D model.
+- The fox starts animating when I Click on it. An animated fox stops when I click again.
+- The flamingo and parrot start flapping their wings and rotating around the house when I Click on the house. They stop when I click again.
 
 # BONUS - Some cool effects
 
