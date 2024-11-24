@@ -21,7 +21,7 @@ Some models were found on the [ThreeJS Examples](https://github.com/mrdoob/three
 ## How to submit
 
 - [Drop your code, as a zip file, in here](https://drive.google.com/drive/folders/1B4TgjEEfdOYjTHp9lK81HVvfOH6FCRh0?usp=drive_link)
-- Name of the zip: <login>.zip
+- Name of the zip: login.zip, with 'login' being your login.
 - Send the code as a zip file. You can send me a google drive link if the package is too heavy.
 
 **Be careful**: You will lose points if the project does not compile or if the node_modules are still there.
